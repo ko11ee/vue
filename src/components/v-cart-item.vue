@@ -6,8 +6,8 @@
       <p>{{ cart_item_data.price }}</p>
       <p>{{ cart_item_data.article }}</p>
     </div>
-    <div class="v-cart-item__quantity"></div>
-    <button>Delete</button>
+    <div class="v-cart-item__quantity">Qnt:{{ cart_item_data.quantity }}</div>
+    <button @click="deleteFromCart">Delete</button>
   </div>
 </template>
 
@@ -26,6 +26,14 @@ export default {
     return {}
   },
   computed: {},
+  methods: {
+    deleteFromCart() {
+      this.$emit('deleteFromCart')
+    }
+  },
+  mounted() {
+    this.$set(this.cart_item_data, 'quantity' ,1)
+  }
 }
 </script>
 
@@ -35,5 +43,12 @@ export default {
         flex-wrap: nowrap;
         align-items: center;
         justify-content: space-between;
+        flex-basis: 25%;
+        box-shadow: 0 0 8px 0 #e0e0e0;
+        padding: $padding * 2;
+        margin-bottom: $margin * 2;
+        &__image {
+        width: 100px;
+  }
     }
 </style>

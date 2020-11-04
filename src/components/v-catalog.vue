@@ -1,5 +1,6 @@
 <template>
   <div class="v-catalog">
+    <div class="v-catalog__link_to_cart">Cart: 0</div>
     <h1>Catalog</h1>
     <div class="v-catalog__list">
       <v-catalog-item
