@@ -1,6 +1,8 @@
 <template>
   <div class="v-catalog">
-    <div class="v-catalog__link_to_cart">Cart: 0</div>
+    <router-link :to="{name: 'cart', params: {cart_data: CART}}">
+      <button class="v-catalog__link_to_cart">Cart: {{ CART.length }}</button>
+    </router-link>
     <h1>Catalog</h1>
     <div class="v-catalog__list">
       <v-catalog-item
@@ -30,7 +32,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'PRODUCTS'
+      'PRODUCTS',
+      'CART'
     ]),
   },
   methods: {
@@ -63,7 +66,7 @@ export default {
   }
   &__link_to_cart {
     position: fixed;
-    top: 80px;
+    top: 10px;
     right: 10px;
     padding: $padding * 2;
     border: solid 1px #aeaeae;

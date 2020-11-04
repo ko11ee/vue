@@ -1,12 +1,20 @@
 <template>
   <div class="v-cart">
+    <router-link :to="{name: 'catalog'}">
+      <button class="v-catalog__link_to_cart">back to catalog</button>
+    </router-link>
     <h1>cart</h1>
+    <p v-if="!cart_data.length">Корзина пуста...</p>
     <v-cart-item
       v-for="(item, index) in cart_data"
       :key="item.article"
       :cart_item_data="item"
       @deleteFromCart="deleteFromCart(index)"
     />
+    <div class="v-cart__total">
+      <p>total:</p>
+      <p>{{ cartTotalCost }}</p>
+    </div>
   </div>
 </template>
 
@@ -30,7 +38,22 @@ export default {
   data() {
     return {}
   },
-  computed: {},
+    computed: {
+      cartTotalCost() {
+        let result = []
+        if (this.cart_data.length) {
+          for (let item of this.cart_data) {
+            result.push(item.price * item.quantity)
+          }
+          result = result.reduce(function (sum, el) {
+            return sum + el;
+          })
+          return result;
+        } else {
+          return 0
+        }
+      }
+    },
   methods: {
     ...mapActions([
       'DELETE_FROM_CART'
@@ -42,5 +65,23 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+  .v-cart {
+    margin-bottom: 100px;
+    &__total {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      padding: $padding*2 $padding*3;
+      display: flex;
+      justify-content: center;
+      background: $green-bg;
+      color: #ffffff;
+      font-size: 20px;
+    }
+    .total__name {
+      margin-right: $margin*2;
+    }
+  }
 </style>

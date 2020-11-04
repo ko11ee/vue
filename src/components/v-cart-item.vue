@@ -38,17 +38,23 @@ export default {
 </script>
 
 <style lang="scss">
-    .v-cart-item {
-        display: flex;
-        flex-wrap: nowrap;
-        align-items: center;
-        justify-content: space-between;
-        flex-basis: 25%;
-        box-shadow: 0 0 8px 0 #e0e0e0;
-        padding: $padding * 2;
-        margin-bottom: $margin * 2;
-        &__image {
-        width: 100px;
-  }
-    }
+    // .v-cart-item {
+    //     display: flex;
+    //     flex-wrap: nowrap;
+    //     align-items: center;
+    //     justify-content: space-between;
+    //     flex-basis: 25%;
+    //     box-shadow: 0 0 8px 0 #e0e0e0;
+    //     padding: $padding * 2;
+    //     margin-bottom: $margin * 2;}
+        .v-cart-item {
+          border-radius: 5px;
+          padding: 20px;
+          background: white;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+        }
 </style>
